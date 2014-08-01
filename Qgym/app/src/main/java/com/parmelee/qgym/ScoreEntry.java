@@ -6,12 +6,17 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 
 public class ScoreEntry extends ActionBarActivity {
     private DataAccessor da;
     private Spinner spn;
+    private Cursor c;
+    private ArrayList<String> Meets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,17 +25,17 @@ public class ScoreEntry extends ActionBarActivity {
 
         try {
             da = DataAccessor.getInstance(getApplicationContext());
-            Cursor s = da.getMeets();
-            s.moveToFirst();
-            Log.d("Database", s.getString(s.getColumnIndex(DB_Schema.Meet.MEET_NAME)));
+            c = da.getMeets();
+            c.moveToFirst();
+            Meets.add(c.getString(c.getColumnIndex(DB_Schema.Meet.MEET_NAME)));
         } catch (Exception ex) {
             Log.d("Database", ex.toString());
         }
 
-//        spn = (Spinner)findViewById(R.id.spn_Meets);
-//        Adapter a = new SimpleCursorAdapter(getApplicationContext(), R.layout.activity_score_entry, da.getMeets(), null, null, 0);
-//        spn.setAdapter((SpinnerAdapter)a);
-
+        spn = (Spinner)findViewById(R.id.spn_Meets);
+        ArrayAdapter<CharSequence> a = ArrayAdapter.cre(this, this.Meets, android.R.layout.simple_spinner_item);
+        a.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spn.setAdapter(a);
     }
 
 
