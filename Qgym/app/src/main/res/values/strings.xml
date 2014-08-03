@@ -5,5 +5,10 @@
     <string name="db">GymnasticsDB</string>
     <string name="action_settings">Settings</string>
     <string name="newMeet">...</string>
+    <string name="gymanst">Gymnast</string>
+    <string name="vault">Vault</string>
+    <string name="bars">Bars</string>
+    <string name="beam">Beam</string>
+    <string name="floor">Floor</string>
 
 </resources>
