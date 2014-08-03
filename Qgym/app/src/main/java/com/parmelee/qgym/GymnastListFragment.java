@@ -23,7 +23,7 @@ public class GymnastListFragment extends ListFragment {
 
         DataAccessor da = new DataAccessor();
         FragmentManager fm = getFragmentManager();
-        
+
     }
 
     class GymnastAdaptor extends CursorAdapter {
