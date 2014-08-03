@@ -53,7 +53,6 @@ public class GymnasticsDB extends SQLiteOpenHelper {
                 DB_Schema.Gymnast.DIVISION + " INTEGER " +
                 ");";
 
-        Log.d(TAG, "Gymnast Table method");
         return table;
     }
 
@@ -65,7 +64,7 @@ public class GymnasticsDB extends SQLiteOpenHelper {
                 DB_Schema.Meet.MEET_NAME + " TEXT, " +
                 DB_Schema.Meet.DATE + " TEXT " +
                 ");";
-        Log.d(TAG, "Meet Table method");
+
         return table;
     }
 
@@ -87,7 +86,6 @@ public class GymnasticsDB extends SQLiteOpenHelper {
                 "FOREIGN KEY(" + DB_Schema.Scores.MEET_ID + ") REFERENCES " + DB_Schema.Meet.TABLE_NAME + "(" + DB_Schema.Meet._ID + ") " +
                 ");";
 
-        Log.d(TAG, "Scores table method");
         return table;
     }
 
@@ -103,7 +101,6 @@ public class GymnasticsDB extends SQLiteOpenHelper {
                 DB_Schema.Configuration.BACKGROUND_COLOR + " TEXT, " +
                 DB_Schema.Configuration.ACCENT_COLOR + " TEXT " +
                 ");";
-        Log.d(TAG, "Config table Method");
         return table;
     }
 }
