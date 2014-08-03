@@ -2,40 +2,39 @@ package com.parmelee.qgym;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-
-import java.util.ArrayList;
 
 
 public class ScoreEntry extends ActionBarActivity {
     private DataAccessor da;
     private Spinner spn;
     private Cursor c;
-    private ArrayList<String> Meets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_entry);
 
-        try {
-            da = DataAccessor.getInstance(getApplicationContext());
-            c = da.getMeets();
-            c.moveToFirst();
-            Meets.add(c.getString(c.getColumnIndex(DB_Schema.Meet.MEET_NAME)));
-        } catch (Exception ex) {
-            Log.d("Database", ex.toString());
-        }
+        da = DataAccessor.getInstance(getApplicationContext());
 
         spn = (Spinner)findViewById(R.id.spn_Meets);
-        ArrayAdapter<CharSequence> a = ArrayAdapter.cre(this, this.Meets, android.R.layout.simple_spinner_item);
-        a.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spn.setAdapter(a);
+        try {
+            SimpleCursorAdapter a = new SimpleCursorAdapter(getApplicationContext(),
+                    android.R.layout.simple_list_item_1,
+                    da.getMeets(),
+                    new String[] {"Meet_Name"},
+                    new int[] {android.R.id.text1},
+                    android.support.v4.widget.CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+            //a.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+            spn.setAdapter(a);
+        } catch(Exception ex) {
+            Log.d("Database", ex.toString());
+        }
     }
 
 
