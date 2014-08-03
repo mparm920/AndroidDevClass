@@ -20,6 +20,7 @@ public class DataAccessor {
     public static DataAccessor getInstance(Context c) {
         if (instance == null) {
             instance = new DataAccessor();
+
             db = new GymnasticsDB(c).getWritableDatabase();
             compileSqlStatements();
         }
@@ -27,7 +28,7 @@ public class DataAccessor {
     }
 
     public Cursor getGymnast() {
-        Cursor c = db.rawQuery("SELECT g.Last_Name, s.Vault, s.Bars, s.Beam, s.Floor\n" +
+        Cursor c = db.rawQuery("SELECT _id, (g.Last_Name + g.First_Name) as FullName, s.Vault, s.Bars, s.Beam, s.Floor\n" +
                 "FROM tScores AS s\n" +
                 "JOIN tGymnast AS g ON g._id = s.Gymnast_id;", null);
 
@@ -60,7 +61,7 @@ public class DataAccessor {
     }
 
     public Cursor getMeets() {
-        Cursor meet = db.rawQuery("SELECT " + DB_Schema.Meet.MEET_NAME + " From " + DB_Schema.Meet.TABLE_NAME, null);
+        Cursor meet = db.rawQuery("SELECT * From " + DB_Schema.Meet.TABLE_NAME, null);
         return meet;
     }
 
