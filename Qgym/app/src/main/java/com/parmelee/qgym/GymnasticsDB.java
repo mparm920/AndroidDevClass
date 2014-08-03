@@ -10,9 +10,16 @@ import android.util.Log;
  */
 public class GymnasticsDB extends SQLiteOpenHelper {
     private final String TAG = "Database";
+    public SQLiteDatabase db;
 
     GymnasticsDB(Context context) {
         super(context, context.getString(R.string.db), null, 1);
+    }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        Log.d(TAG, String.valueOf(db.rawQuery("SELECT * From " + DB_Schema.Meet.TABLE_NAME, null).getCount()));
+        this.db = db;
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -24,12 +31,8 @@ public class GymnasticsDB extends SQLiteOpenHelper {
         Log.d(TAG, "Meet table created");
         db.execSQL(createConfigurationTable()); //creates table to store any data for config
         Log.d(TAG, "config table created");
-        try {
-            db.execSQL(createScoresTable()); //creates table to track scores
-            Log.d(TAG, "Scores table created");
-        } catch (Exception ex) {
-            Log.d(TAG, ex.toString());
-        }
+        db.execSQL(createScoresTable()); //creates table to track scores
+        Log.d(TAG, "Scores table created");
 
     }
 
