@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 /**
  * Created by mparm920 on 7/27/14.
@@ -28,10 +29,15 @@ public class DataAccessor {
     }
 
     public Cursor getGymnast() {
-        Cursor c = db.rawQuery("SELECT _id, (g.Last_Name + g.First_Name) as FullName, s.Vault, s.Bars, s.Beam, s.Floor\n" +
-                "FROM tScores AS s\n" +
-                "JOIN tGymnast AS g ON g._id = s.Gymnast_id;", null);
-
+        Log.d("Database", "getGymnast");
+        Cursor c = null;
+        try {
+            c = db.rawQuery("SELECT s._id, (g.Last_Name || \" \" || g.First_Name) as FullName, s.Vault, s.Bars, s.Beam, s.Floor\n" +
+                    "FROM tScores AS s\n" +
+                    "OUTER JOIN tGymnast AS g ON s.Gymnast_id = g._id;", null);
+        }catch(Exception ex) {
+            Log.d("Database", "getGymnast query " + ex);
+        }
         return c;
     }
 

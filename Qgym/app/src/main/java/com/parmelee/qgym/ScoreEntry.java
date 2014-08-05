@@ -1,7 +1,8 @@
 package com.parmelee.qgym;
 
-import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -13,7 +14,6 @@ import android.widget.Spinner;
 public class ScoreEntry extends ActionBarActivity {
     private DataAccessor da;
     private Spinner spn;
-    private Cursor c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,14 @@ public class ScoreEntry extends ActionBarActivity {
         } catch(Exception ex) {
             Log.d("Database", ex.toString());
         }
+
+        Log.d("Database", "starting to add Fragment");
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        GymnastListFragment lf = new GymnastListFragment();
+        lf.setArgs(da.getGymnast());
+        ft.add(R.id.scoreEntryList, lf, "gymnastList");
+        ft.commit();
     }
 
 
