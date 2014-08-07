@@ -1,0 +1,31 @@
+INSERT INTO tGymnast
+VALUES(1, 'Mark', 'Parmelee', '248-830-2053', 'mparm920@gmail.com', 2);
+
+INSERT INTO tGymnast 
+VALUES(2, 'Erin', 'McWatt', '734-658-6023', 'erin.mcwatt@gmail.com', 1);
+
+INSERT INTO tGymnast
+VALUES('blay', 'blah', '248-830-2134', 'blah@gmail.com', 1);
+
+INSERT INTO tConfiguration
+VALUES(1, 4.6, 4.7, 5.8, 9.9, 'BLACK', 'ORANGE');
+
+INSERT INTO tScores
+VALUES(1, 1, 1, 'B', 8.8, 7.5, 8.9, 6.4, 5.5, NULL);
+
+INSERT INTO tScores
+VALUES(2, 2, 1, 'A', 9.9, 9.5, 9.9, 9.4, 9.5, NULL);
+
+SELECT g.Last_Name, s.Vault, s.Bars, s.Beam, s.Floor
+FROM tScores AS s
+JOIN tGymnast AS g ON g._id = s.Gymnast_id;
+
+INSERT INTO tMeet 
+VALUES(2, "Meet 1", "date");
+
+INSERT INTO tMeet 
+VALUES(3, "Meet 2", "date1");
+
+INSERT INTO tMeet 
+VALUES(4, "Meet 3", "date2");
+
