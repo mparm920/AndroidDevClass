@@ -12,13 +12,11 @@
             android:id="@+id/gymnast_name"
             android:text="@string/gymanst"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="25dp"/>
+            android:layout_width="wrap_content"/>
         <TextView
             android:id="@+id/gymnast_name_val"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
             android:layout_span="2"/>
         <ImageButton
             android:id="@+id/notes"
@@ -29,47 +27,39 @@
         <TextView
             android:id="@+id/vault"
             android:text="@string/vault"
-            android:textSize="25dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
         <TextView
             android:id="@+id/bars"
             android:text="@string/bars"
-            android:textSize="25dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
         <TextView
             android:id="@+id/beam"
             android:text="@string/beam"
-            android:textSize="25dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
         <TextView
             android:id="@+id/floor"
             android:text="@string/floor"
-            android:textSize="25dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
     </TableRow>
     <TableRow>
         <TextView
             android:id="@+id/vault_val"
-            android:textSize="25dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
         <TextView
             android:id="@+id/bars_val"
-            android:textSize="25dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
         <TextView
             android:id="@+id/beam_val"
-            android:textSize="25dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
         <TextView
             android:id="@+id/floor_val"
-            android:textSize="25dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
     </TableRow>

@@ -34,7 +34,7 @@ public class DataAccessor {
         try {
             c = db.rawQuery("SELECT s._id, (g.Last_Name || \" \" || g.First_Name) as FullName, s.Vault, s.Bars, s.Beam, s.Floor\n" +
                     "FROM tScores AS s\n" +
-                    "OUTER JOIN tGymnast AS g ON s.Gymnast_id = g._id;", null);
+                    "JOIN tGymnast AS g ON s.Gymnast_id = g._id;", null);
         }catch(Exception ex) {
             Log.d("Database", "getGymnast query " + ex);
         }

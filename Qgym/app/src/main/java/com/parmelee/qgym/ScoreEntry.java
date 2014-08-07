@@ -25,13 +25,14 @@ public class ScoreEntry extends ActionBarActivity {
         spn = (Spinner)findViewById(R.id.spn_Meets);
         try {
             SimpleCursorAdapter a = new SimpleCursorAdapter(getApplicationContext(),
-                    android.R.layout.simple_list_item_1,
+                    android.R.layout.simple_spinner_item,
                     da.getMeets(),
                     new String[] {"Meet_Name"},
                     new int[] {android.R.id.text1},
                     android.support.v4.widget.CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
             //a.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
             spn.setAdapter(a);
+
         } catch(Exception ex) {
             Log.d("Database", ex.toString());
         }
