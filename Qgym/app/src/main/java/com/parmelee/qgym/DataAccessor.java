@@ -67,8 +67,12 @@ public class DataAccessor {
     }
 
     public Cursor getMeets() {
-        Cursor meet = db.rawQuery("SELECT * From " + DB_Schema.Meet.TABLE_NAME, null);
-        return meet;
+        try {
+            return db.rawQuery("SELECT * From " + DB_Schema.Meet.TABLE_NAME, null);
+        }catch (Exception ex) {
+            Log.d("Database", "getMeets called");
+        }
+        return null;
     }
 
     private static void compileSqlStatements() {

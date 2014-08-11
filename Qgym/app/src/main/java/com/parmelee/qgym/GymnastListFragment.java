@@ -8,7 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class GymnastListFragment extends ListFragment {
@@ -31,6 +34,7 @@ public class GymnastListFragment extends ListFragment {
         CursorAdapter gymnastAdapter = new GymnastAdaptor(getActivity().getApplicationContext(), cursor);
         setListAdapter(gymnastAdapter);
         Log.d("Database", "From list frag " + String.valueOf(cursor.getCount()));
+
     }
 
 
@@ -49,11 +53,40 @@ public class GymnastListFragment extends ListFragment {
                 TextView gymnastName = (TextView) v.findViewById(R.id.gymnast_name_val);
                 gymnastName.setText(cursor.getString(cursor.getColumnIndex("FullName")));
 
-                TextView vaultVal = (TextView) v.findViewById(R.id.vault_val);
+                ImageButton btnNotes = (ImageButton)v.findViewById(R.id.btn_notes);
+                btnNotes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getActivity().getApplicationContext(), "Add new Note", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                EditText vaultVal = (EditText) v.findViewById(R.id.vault_val);
                 if (cursor.getFloat(cursor.getColumnIndex(DB_Schema.Scores.VAULT)) != 0) {
                     vaultVal.setText(cursor.getString(cursor.getColumnIndex(DB_Schema.Scores.VAULT)));
                 } else {
                     vaultVal.setText("0");
+                }
+
+                EditText barVal = (EditText) v.findViewById(R.id.bars_val);
+                if (cursor.getFloat(cursor.getColumnIndex(DB_Schema.Scores.BARS)) != 0) {
+                    barVal.setText(cursor.getString(cursor.getColumnIndex(DB_Schema.Scores.BARS)));
+                } else {
+                    barVal.setText("0");
+                }
+
+                EditText beamVal = (EditText) v.findViewById(R.id.beam_val);
+                if (cursor.getFloat(cursor.getColumnIndex(DB_Schema.Scores.BEAM)) != 0) {
+                    beamVal.setText(cursor.getString(cursor.getColumnIndex(DB_Schema.Scores.BEAM)));
+                } else {
+                    beamVal.setText("0");
+                }
+
+                EditText floorVal = (EditText) v.findViewById(R.id.floor_val);
+                if (cursor.getFloat(cursor.getColumnIndex(DB_Schema.Scores.FLOOR)) != 0) {
+                    floorVal.setText(cursor.getString(cursor.getColumnIndex(DB_Schema.Scores.FLOOR)));
+                } else {
+                    floorVal.setText("0");
                 }
 
             }catch(Exception ex) {

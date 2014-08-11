@@ -8,18 +8,23 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 public class ScoreEntry extends ActionBarActivity {
     private DataAccessor da;
     private Spinner spn;
+    private Button btnDate;
+    private Button btnNewMeet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_entry);
-
+        Log.d("Database", "ScoreEntry.onCreate");
         da = DataAccessor.getInstance(getApplicationContext());
 
         spn = (Spinner)findViewById(R.id.spn_Meets);
@@ -36,6 +41,24 @@ public class ScoreEntry extends ActionBarActivity {
         } catch(Exception ex) {
             Log.d("Database", ex.toString());
         }
+        Log.d("Database", "Spinner done");
+        btnDate = (Button)findViewById(R.id.btn_Date);
+        btnDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Change Date", Toast.LENGTH_LONG).show();
+
+            }
+        });
+        Log.d("Database", "btn_Date Done");
+        btnNewMeet = (Button)findViewById(R.id.btn_newMeet);
+        btnNewMeet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "New Meet", Toast.LENGTH_LONG).show();
+            }
+        });
+        Log.d("Database", "btn_newMeet Done");
 
         Log.d("Database", "starting to add Fragment");
         FragmentManager fm = getSupportFragmentManager();

@@ -10,5 +10,10 @@
     <string name="bars">Bars</string>
     <string name="beam">Beam</string>
     <string name="floor">Floor</string>
+    <string name="preferences">Preferences</string>
+    <string name="reports">Reports</string>
+    <string name="title_activity_reports">ReportsActivity</string>
+    <string name="title_activity_preferences">PreferencesActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
