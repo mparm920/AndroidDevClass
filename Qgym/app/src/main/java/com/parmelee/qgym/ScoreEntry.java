@@ -1,6 +1,8 @@
 package com.parmelee.qgym;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SimpleCursorAdapter;
@@ -46,6 +48,8 @@ public class ScoreEntry extends ActionBarActivity {
         btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DialogFragment dateDiag = new DatePickerFragment();
+                dateDiag.show(getSupportFragmentManager(), "datePicker");
                 Toast.makeText(getApplicationContext(), "Change Date", Toast.LENGTH_LONG).show();
 
             }
@@ -55,6 +59,8 @@ public class ScoreEntry extends ActionBarActivity {
         btnNewMeet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DialogFragment newMeetDiag = new NewMeetFragment();
+                newMeetDiag.show(getSupportFragmentManager(), "newMeet");
                 Toast.makeText(getApplicationContext(), "New Meet", Toast.LENGTH_LONG).show();
             }
         });
@@ -69,6 +75,17 @@ public class ScoreEntry extends ActionBarActivity {
         ft.commit();
     }
 
+    public void updateDate(String date) {
+        Log.d("Database", "from ScoreEntry " + date);
+    }
+
+    public void updateMeets(String meetName) {
+        Log.d("Database", meetName);
+    }
+
+    public void updateNotes(String newNotes) {
+        Log.d("Database", newNotes);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,9 +99,13 @@ public class ScoreEntry extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch(item.getItemId()) {
+            case R.id.action_settings :
+                return true;
+            case R.id.action_reports :
+                Intent i = new Intent(this, ReportsActivity.class);
+                startActivity(i);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

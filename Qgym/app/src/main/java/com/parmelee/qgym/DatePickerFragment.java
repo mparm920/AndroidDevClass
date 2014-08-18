@@ -1,29 +1,39 @@
 package com.parmelee.qgym;
 
 
-
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.DialogFragment;
+import android.widget.DatePicker;
+
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
-
-public class DatePickerFragment extends Fragment {
-
-
-    public DatePickerFragment() {
-        // Required empty public constructor
-    }
-
+public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+    Calendar c;
+    public DatePickerFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_date_picker, container, false);
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+         super.onCreateDialog(savedInstanceState);
+        c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog d = new DatePickerDialog(getActivity(), this, year, month, day);
+
+        return d;
     }
 
-
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
+        String newDate = format.format(format.parse((i2 + 1) + "-" + i3 + "-" + i, new ParsePosition(0)));
+        ScoreEntry scoreEntry = (ScoreEntry)getActivity();
+        scoreEntry.updateDate(newDate);
+    }
 }

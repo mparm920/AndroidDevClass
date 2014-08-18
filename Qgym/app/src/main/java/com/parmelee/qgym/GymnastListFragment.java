@@ -3,6 +3,7 @@ package com.parmelee.qgym;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
@@ -57,6 +58,9 @@ public class GymnastListFragment extends ListFragment {
                 btnNotes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        NotesFragment notes = new NotesFragment();
+                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        notes.show(fm, "Notes");
                         Toast.makeText(getActivity().getApplicationContext(), "Add new Note", Toast.LENGTH_LONG).show();
                     }
                 });
@@ -97,22 +101,22 @@ public class GymnastListFragment extends ListFragment {
 
         @Override
         public void bindView(View v, Context context, Cursor cursor) {
-            try {
-                if (v == null) {
-                    v = View.inflate(context, R.id.fragmentGymnastList, null);
-                }
-                TextView gymnastName = (TextView) v.findViewById(R.id.gymnast_name_val);
-                gymnastName.setText(cursor.getString(cursor.getColumnIndex("FullName")));
+            //try {
+                //if (v == null) {
+                   // v = View.inflate(context, R.id.fragmentGymnastList, null);
+                //}
+                //TextView gymnastName = (TextView) v.findViewById(R.id.gymnast_name_val);
+                //gymnastName.setText(cursor.getString(cursor.getColumnIndex("FullName")));
 
-                TextView vaultVal = (TextView) v.findViewById(R.id.vault_val);
-                if (cursor.getFloat(cursor.getColumnIndex(DB_Schema.Scores.VAULT)) != 0) {
-                    vaultVal.setText(cursor.getString(cursor.getColumnIndex(DB_Schema.Scores.VAULT)));
-                } else {
-                    vaultVal.setText("0");
-                }
-            }catch (Exception ex) {
-                Log.d("Database", "GymnastAdaptor.newView " + ex.toString());
-            }
+                //TextView vaultVal = (TextView) v.findViewById(R.id.vault_val);
+                //if (cursor.getFloat(cursor.getColumnIndex(DB_Schema.Scores.VAULT)) != 0) {
+                    //vaultVal.setText(cursor.getString(cursor.getColumnIndex(DB_Schema.Scores.VAULT)));
+                //} else {
+                    //vaultVal.setText("0");
+                //}
+            //}catch (Exception ex) {
+                //Log.d("Database", "GymnastAdaptor.newView " + ex.toString());
+            //}
         }
     }
 

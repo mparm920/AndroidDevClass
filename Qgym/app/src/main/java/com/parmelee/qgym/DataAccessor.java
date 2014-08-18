@@ -66,6 +66,15 @@ public class DataAccessor {
 
     }
 
+    public Cursor getGymnastReports(String name) {
+        String query = "SELECT * From " + DB_Schema.Scores.TABLE_NAME +
+                " AS s LEFT OUTER JOIN " + DB_Schema.Gymnast.TABLE_NAME + " AS g on " +
+                "s.Gymnast_Id = g._id " + "LEFT OUTER JOIN " + DB_Schema.Meet.TABLE_NAME +
+                " AS m on s.Meet_Id = m._id WHERE g.Last_Name = '" + name + "'";
+        Log.d("Database", query);
+        return db.rawQuery(query, null);
+    }
+
     public Cursor getMeets() {
         try {
             return db.rawQuery("SELECT * From " + DB_Schema.Meet.TABLE_NAME, null);
