@@ -24,6 +24,7 @@ public class DataAccessor {
 
             db = new GymnasticsDB(c).getWritableDatabase();
             compileSqlStatements();
+            addData();
         }
         return instance;
     }
@@ -94,6 +95,28 @@ public class DataAccessor {
                 DB_Schema.Scores.VAULT + " = ?, " + DB_Schema.Scores.BARS + " = ?, " + DB_Schema.Scores.BEAM +
         " = ?, " + DB_Schema.Scores.FLOOR + " = ? WHERE " + DB_Schema.Scores.GYMNAST_ID + " = ? AND " +
                 DB_Schema.Scores.MEET_ID + " = ?;");
+    }
+
+    private static void addData() {
+        String[] query = {"INSERT INTO tGymnast VALUES(1, 'Mark', 'Parmelee', '248-830-2053', 'mparm920@gmail.com', 2);",
+                "INSERT INTO tGymnast VALUES(2, 'Erin', 'McWatt', '734-658-6023', 'erin.mcwatt@gmail.com', 1);",
+                "INSERT INTO tGymnast VALUES(3, 'blay', 'blah', '248-830-2134', 'blah@gmail.com', 3);",
+                "INSERT INTO tConfiguration VALUES(1, 4.6, 4.7, 5.8, 9.9, 'BLACK', 'ORANGE');",
+                "INSERT INTO tScores VALUES(1, 1, 1, 'B', 8.8, 7.5, 8.9, 6.4, 5.5, NULL);",
+                "INSERT INTO tScores VALUES(3, 1, 1, 'B', 8.8, 7.5, 8.9, 6.4, 5.5, NULL);",
+                "INSERT INTO tScores VALUES(2, 2, 1, 'A', 9.9, 9.5, 9.9, 9.4, 9.5, NULL);",
+                "INSERT INTO tMeet VALUES(2, 'Meet 1', 'date');",
+                "INSERT INTO tMeet VALUES(3, 'Meet 2', 'date1');",
+                "INSERT INTO tMeet VALUES(4, 'Meet 3', 'date2');"
+        };
+        Log.d("Database", String.valueOf(query.length));
+        try {
+            for (int i = 0; i < 10; i++) {
+                db.execSQL(query[i]);
+            }
+        }catch (Exception ex) {
+            Log.d("Database", ex.toString());
+        }
     }
 
 }

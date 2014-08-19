@@ -51,6 +51,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/reportsVaultVal"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,6 +59,7 @@
             android:text="@string/vault"/>
 
         <TextView
+            android:id="@+id/reportsBarsVal"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -65,6 +67,7 @@
             android:text="@string/bars"/>
 
         <TextView
+            android:id="@+id/reportsBeamVal"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -72,6 +75,7 @@
             android:text="@string/beam"/>
 
         <TextView
+            android:id="@+id/reportsFloorVal"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

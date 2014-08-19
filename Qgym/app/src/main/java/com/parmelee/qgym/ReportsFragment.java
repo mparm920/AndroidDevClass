@@ -63,6 +63,18 @@ public class ReportsFragment extends ListFragment {
             Log.d("Database", "new date " + date);
             meetDate.setText(date);
 
+            TextView scoreVaultVal = (TextView)view.findViewById(R.id.reportsVaultVal);
+            scoreVaultVal.setText(cursor.getString(cursor.getColumnIndex(DB_Schema.Scores.VAULT)));
+
+            TextView scoreBarsVal = (TextView)view.findViewById(R.id.reportsBarsVal);
+            scoreBarsVal.setText(cursor.getString(cursor.getColumnIndex(DB_Schema.Scores.BARS)));
+
+            TextView scoreBeamVal = (TextView)view.findViewById(R.id.reportsBeamVal);
+            scoreBeamVal.setText(cursor.getString(cursor.getColumnIndex(DB_Schema.Scores.BEAM)));
+
+            TextView scoreFloorVal = (TextView)view.findViewById(R.id.reportsFloorVal);
+            scoreFloorVal.setText(cursor.getString(cursor.getColumnIndex(DB_Schema.Scores.FLOOR)));
+
             return view;
         }
 
