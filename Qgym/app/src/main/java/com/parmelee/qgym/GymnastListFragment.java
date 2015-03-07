@@ -1,10 +1,10 @@
 package com.parmelee.qgym;
 
+import android.app.FragmentManager;
+import android.app.ListFragment;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +59,8 @@ public class GymnastListFragment extends ListFragment {
                     @Override
                     public void onClick(View view) {
                         NotesFragment notes = new NotesFragment();
-                        FragmentManager fm = getActivity().getSupportFragmentManager();
+                        FragmentManager fm;
+                        fm = getActivity().getFragmentManager();
                         notes.show(fm, "Notes");
                         Toast.makeText(getActivity().getApplicationContext(), "Add new Note", Toast.LENGTH_LONG).show();
                     }

@@ -1,12 +1,12 @@
 package com.parmelee.qgym;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.parmelee.qgym.R;
 
-public class PreferencesActivity extends ActionBarActivity {
+public class PreferencesActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

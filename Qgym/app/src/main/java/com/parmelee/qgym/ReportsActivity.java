@@ -2,9 +2,9 @@ package com.parmelee.qgym;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +15,7 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-public class ReportsActivity extends ActionBarActivity implements Spinner.OnItemSelectedListener{
+public class ReportsActivity extends Activity implements Spinner.OnItemSelectedListener{
     Spinner spnGymnastList;
     DataAccessor da;
     ArrayList<String> gymnastNames;
@@ -76,7 +76,7 @@ public class ReportsActivity extends ActionBarActivity implements Spinner.OnItem
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         name = gymnastNames.get(i).split(" ")[0];
         ReportsFragment rf = ReportsFragment.getInstance(da.getGymnastReports(name));
-        FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.reportFragment, rf, "GymnastReport");
         ft.commit();

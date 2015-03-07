@@ -2,11 +2,11 @@ package com.parmelee.qgym;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v7.app.ActionBarActivity;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.widget.SimpleCursorAdapter;
+import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
-public class ScoreEntry extends ActionBarActivity {
+public class ScoreEntry extends Activity {
     private DataAccessor da;
     private Spinner spn;
     private Button btnDate;
@@ -36,7 +36,7 @@ public class ScoreEntry extends ActionBarActivity {
                     da.getMeets(),
                     new String[] {"Meet_Name"},
                     new int[] {android.R.id.text1},
-                    android.support.v4.widget.CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+                    android.widget.CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
             //a.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
             spn.setAdapter(a);
 
@@ -49,7 +49,7 @@ public class ScoreEntry extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 DialogFragment dateDiag = new DatePickerFragment();
-                dateDiag.show(getSupportFragmentManager(), "datePicker");
+                dateDiag.show(getFragmentManager(), "datePicker");
                 Toast.makeText(getApplicationContext(), "Change Date", Toast.LENGTH_LONG).show();
 
             }
@@ -60,14 +60,14 @@ public class ScoreEntry extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 DialogFragment newMeetDiag = new NewMeetFragment();
-                newMeetDiag.show(getSupportFragmentManager(), "newMeet");
+                newMeetDiag.show(getFragmentManager(), "newMeet");
                 Toast.makeText(getApplicationContext(), "New Meet", Toast.LENGTH_LONG).show();
             }
         });
         Log.d("Database", "btn_newMeet Done");
 
         Log.d("Database", "starting to add Fragment");
-        FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         GymnastListFragment lf = new GymnastListFragment();
         lf.setArgs(da.getGymnast());
