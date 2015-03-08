@@ -33,7 +33,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
         SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
         String newDate = format.format(format.parse((i2 + 1) + "-" + i3 + "-" + i, new ParsePosition(0)));
-        ScoreEntry scoreEntry = (ScoreEntry)getActivity();
+        ScoreEntryActivity scoreEntry = (ScoreEntryActivity)getActivity();
         scoreEntry.updateDate(newDate);
     }
 }

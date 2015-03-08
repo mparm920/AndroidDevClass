@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.parmelee.qgym.R;
+
 /**
  * Created by mparm920 on 7/26/14.
  */

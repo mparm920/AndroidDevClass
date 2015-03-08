@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="com.parmelee.qgym.DatePickerFragment">
+    tools:context="com.parmelee.qgym.Views.DatePickerFragment">
 
     <DatePicker
         android:layout_width="match_parent"

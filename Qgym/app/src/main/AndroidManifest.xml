@@ -14,16 +14,15 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ScoreEntry"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ReportsActivity"
+        <!--<activity
+            android:name=".Controllers.ReportsActivity"
             android:label="@string/title_activity_reports" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,9 +31,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PreferencesActivity"
+            android:name=".Controllers.PreferencesActivity"
             android:label="@string/title_activity_preferences" >
         </activity>
+        <activity android:name=".Controllers.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>-->
     </application>
 
 </manifest>

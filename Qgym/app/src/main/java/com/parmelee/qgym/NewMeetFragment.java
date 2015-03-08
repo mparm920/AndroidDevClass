@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.parmelee.qgym.R;
+
 
 public class NewMeetFragment extends DialogFragment implements View.OnClickListener {
     Button btnNewMeet;
@@ -50,7 +52,7 @@ public class NewMeetFragment extends DialogFragment implements View.OnClickListe
         switch(view.getId()) {
             case R.id.ok:
                 Log.d("Database", "new meet click event");
-                ScoreEntry scoreEntry = (ScoreEntry) getActivity();
+                ScoreEntryActivity scoreEntry = (ScoreEntryActivity) getActivity();
                 scoreEntry.updateMeets(addNewMeet.getText().toString());
                 break;
             default:

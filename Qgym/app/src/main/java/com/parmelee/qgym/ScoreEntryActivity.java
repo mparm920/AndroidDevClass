@@ -16,16 +16,18 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
-public class ScoreEntry extends Activity {
+
+
+public class ScoreEntryActivity extends Activity {
     private DataAccessor da;
     private Spinner spn;
-    private Button btnDate;
-    private Button btnNewMeet;
+    //private Button btnDate;
+    //private Button btnNewMeet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score_entry);
+        setContentView(R.layout.fragment_score_entry);
         Log.d("Database", "ScoreEntry.onCreate");
         da = DataAccessor.getInstance(getApplicationContext());
 
@@ -43,7 +45,7 @@ public class ScoreEntry extends Activity {
         } catch(Exception ex) {
             Log.d("Database", ex.toString());
         }
-        Log.d("Database", "Spinner done");
+        /*Log.d("Database", "Spinner done");
         btnDate = (Button)findViewById(R.id.btn_Date);
         btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +65,7 @@ public class ScoreEntry extends Activity {
                 newMeetDiag.show(getFragmentManager(), "newMeet");
                 Toast.makeText(getApplicationContext(), "New Meet", Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
         Log.d("Database", "btn_newMeet Done");
 
         Log.d("Database", "starting to add Fragment");

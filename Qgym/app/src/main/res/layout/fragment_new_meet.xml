@@ -1,19 +1,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context="com.parmelee.qgym.NewMeetFragment">
+    tools:context="com.parmelee.qgym.Views.NewMeetFragment">
 
     <EditText
         android:id="@+id/add_new_meet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:hint="@string/newMeetName"
         />
+
+    <Button
+        android:id="@+id/set_Date"
+        android:text="@string/setDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
 
         <Button
             android:id="@+id/cancel"
@@ -27,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/ok"/>
+            android:text="@string/save"/>
         </LinearLayout>
 
 </LinearLayout>
